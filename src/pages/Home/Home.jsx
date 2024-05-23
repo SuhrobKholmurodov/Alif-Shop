@@ -97,7 +97,12 @@ const Home = () => {
 
   const [open, setOpen] = React.useState(false);
   const [selectedProductName, setSelectedProductName] = useState("");
-  const [sliderValue, setSliderValue] = useState(999);
+  const [sliderValue, setSliderValue] = useState(0);
+  const [selectCategory, setSelectCategory] = useState("");
+  const [search, setSearch] = useState("");
+
+  console.log(sliderValue);
+
   const handleClickOpen = (name) => {
     setOpen(true);
     setSelectedProductName(name);
@@ -105,11 +110,9 @@ const Home = () => {
   const handleClose = () => {
     setOpen(false);
   };
-  const [selectCategory, setSelectCategory] = useState("");
   const handleChangeSelect = (e) => {
     setSelectCategory(e.target.value);
   };
-  const [search, setSearch] = useState("");
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };
@@ -127,11 +130,12 @@ const Home = () => {
     dispatch(getUsers());
   }, [dispatch]);
 
-  const filterData = data?.filter(
-    (el) =>
-      (selectCategory === "" || el.category === selectCategory) &&
-      (selectBrand === "" || el.brand === selectBrand) &&
-      el.price <= sliderValue
+  const filterData = data?.filter((el) =>
+    (selectCategory === "" || el.category === selectCategory) &&
+    (selectBrand === "" || el.brand === selectBrand) &&
+    sliderValue
+      ? el.price <= sliderValue
+      : el
   );
 
   const filteredData = filterData?.filter(
@@ -146,7 +150,7 @@ const Home = () => {
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
         <div className="all">
-          <div className="grid grid-cols-2 gap-[350px]">
+          <div className="flex justify-between">
             <div id="left" className="flex gap-[20px]">
               <div className="flex items-center gap-[20px]">
                 <div id="SelectForCategory" className="flex flex-col gap-[5px]">
