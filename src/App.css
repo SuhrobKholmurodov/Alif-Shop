@@ -1,0 +1,60 @@
+.active 
+{
+    color: #00A046;
+    padding: 8px 16px;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px; 
+}
+
+#seeMore 
+{
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#all:hover #seeMore 
+{
+    opacity: 1;
+}
+.navLink 
+{
+    padding: 8px 16px; 
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.navLink:hover 
+{
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px; 
+}
+.comment-container 
+{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+  
+.profile-image 
+{
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    border: 1px solid black;
+    margin-right: 10px;
+}
+  
+.username 
+{
+    font-weight: 600;
+    margin-bottom: 2px;
+} 
+.comment-text 
+{
+    margin: 0;
+}
+  
